@@ -176,6 +176,12 @@ function analyzeSalesData(data, options) {
         delete seller.products_sold;
     });
 
+    // --- Округление чисел ---
+    sellerStats.forEach(seller => {
+        seller.revenue = Number(seller.revenue.toFixed(2));
+        seller.profit = Number(seller.profit.toFixed(2));
+        seller.bonus = Number(seller.bonus.toFixed(2));
+    });
     // --- Подготовка итоговой коллекции с нужными полями ---
     return sellerStats;
 }
